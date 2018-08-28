@@ -1,0 +1,8 @@
+steps:
+  - name: "eu.gcr.io/cloud-builders/go"
+    args: ["install", "github.com/fantomiks/gcp-cd-codelab"]
+    env: ["PROJECT_ROOT=github.com/fantomiks/gcp-cd-codelab"]
+  - name: "eu.gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "eu.gcr.io/pik-lab/gcp-cd-codelab:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "eu.gcr.io/pik-lab/gcp-cd-codelab:$REVISION_ID"
